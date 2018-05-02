@@ -19,7 +19,7 @@ ssh -p <port_number> localhost
 
 ### All Node preparation
 
-** [NZ May2] Maybe we can create a script to prepare nodes (instead of step by step) **
+**[NZ May2] Maybe we can create a script to prepare nodes (instead of step by step)**
 
 INSTALLATION OF DOCKER
 
@@ -136,29 +136,28 @@ docker run -v $(pwd):/data -e LICENSE=accept \
       + Open the /<installation_directory>/cluster/hosts file.
       + Add the IP addresses for the different node types to the different sections of the file.
       
-      ```
-[master]
-9.113.25.216
-
-[worker]
-9.113.25.217
-9.113.25.218
-
-[proxy]
-9.113.25.215
-
-[management]
-9.113.25.215
-      ```
-      + If you use SSH keys to secure your cluster, in the /<installation_directory>/cluster folder, replace the ssh_key file with the private key file that is used to communicate with the other cluster nodes. Run this command:
+      ``` shell
+      [master]
+      9.113.25.216
       
+      [worker]
+      9.113.25.217
+      9.113.25.218
+      
+      [proxy]
+      9.113.25.215
+      
+      [management]
+      9.113.25.215
+      ```
+      
+      + If you use SSH keys to secure your cluster, in the /<installation_directory>/cluster folder, replace the ssh_key file with the private key file that is used to communicate with the other cluster nodes. Run this command:
       ``` shell
       cp ~/.ssh/id_rsa ./cluster/ssh_key
       ```
     
     + Move the image files for your cluster to the /<installation_directory>/cluster/images folder
-    
-    ```
+    ``` shell
     mkdir -p cluster/images
     mv /<path_to_installation_file>/ibm-cloud-private-x86_64-2.1.0.2.tar.gz  cluster/images/
     ```
