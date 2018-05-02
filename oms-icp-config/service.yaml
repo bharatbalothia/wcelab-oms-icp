@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: 2018-04-30T15:07:41Z
+  labels:
+    app: oms-icp-app-cluster-ip
+  name: oms-icp-app-cluster-ip
+  namespace: default
+  resourceVersion: "19721632"
+  selfLink: /api/v1/namespaces/default/services/oms-icp-app-cluster-ip
+  uid: 3a38bab3-4c88-11e8-9b31-fa163ebc2b74
+spec:
+  clusterIP: 10.0.0.136
+  ports:
+  - name: oms
+    port: 31000
+    protocol: TCP
+    targetPort: 31000
+  - name: wcs
+    port: 32000
+    protocol: TCP
+    targetPort: 32000
+  selector:
+    app: oms-icp-app
+  sessionAffinity: None
+  type: ClusterIP
+status:
+  loadBalancer: {}

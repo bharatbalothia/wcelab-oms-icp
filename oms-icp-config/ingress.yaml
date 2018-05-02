@@ -1,0 +1,27 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    ingress.kubernetes.io/proxy-redirect-from: ~^(http?://[^:]+):\d+(?<relpath>/.+)$
+      https://$http_host$relpath
+  name: proxy-redirect-ingress
+  namespace: default
+  resourceVersion: "19723094"
+  selfLink: /apis/extensions/v1beta1/namespaces/default/ingresses/proxy-redirect-ingress
+  uid: f9d8f9fa-4c85-11e8-9b31-fa163ebc2b74
+spec:
+  rules:
+  - http:
+      paths:
+      - backend:
+          serviceName: oms-icp-app-cluster-ip
+          servicePort: 32000
+        path: /ibm
+      - backend:
+          serviceName: oms-icp-app-cluster-ip
+          servicePort: 31000
+        path: /smcfs
+status:
+  loadBalancer:
+    ingress:
+    - {}
