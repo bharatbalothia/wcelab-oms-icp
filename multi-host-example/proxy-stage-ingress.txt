@@ -1,0 +1,57 @@
+{
+  "apiVersion": "extensions/v1beta1",
+  "kind": "Ingress",
+  "metadata": {
+    "name": "proxy-stage-ingress",
+    "namespace": "stage",
+    "annotations": {
+      "ingress.kubernetes.io/proxy-redirect-from": "~^(http://[^:]+):\\d+(?<relpath>/.+)$ http://$http_host$relpath"
+    }
+  },
+  "spec": {
+    "rules": [
+      {
+        "host": "ingress2.com",
+        "http": {
+          "paths": [
+            {
+              "path": "/",
+              "backend": {
+                "serviceName": "nginx-stage-service",
+                "servicePort": 8000
+              }
+            },
+            {
+              "path": "/ibm",
+              "backend": {
+                "serviceName": "nginx-stage-service",
+                "servicePort": 8000
+              }
+            },
+            {
+              "path": "/smcfs",
+              "backend": {
+                "serviceName": "nginx-stage-service",
+                "servicePort": 8000
+              }
+            },
+            {
+              "path": "/isccsdev",
+              "backend": {
+                "serviceName": "nginx-stage-service",
+                "servicePort": 8000
+              }
+            },
+            {
+              "path": "/wscdev",
+              "backend": {
+                "serviceName": "nginx-stage-service",
+                "servicePort": 8000
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
+}
