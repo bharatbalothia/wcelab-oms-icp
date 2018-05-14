@@ -19,3 +19,5 @@ This rewrite rule is required because when WAS sends redirect (HTTP 302) respons
     "ingress.kubernetes.io/affinity": "cookie"
     "ingress.kubernetes.io/session-cookie-name": "route"
     "ingress.kubernetes.io/session-cookie-hash": "sha1"
+
+Note: It's recommended to make sure that ingress annotations have taken effect by describe ingress command as wrong or unsupported annotations won't throw any errors and the only way to confirm they have taken effect is to review the describe output.
