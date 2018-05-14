@@ -6,7 +6,7 @@ Key points to note are as below:
 
 "ingress.kubernetes.io/proxy-redirect-from": "~^(http?://[^:]+):\\d+(?<relpath>/.+)$ $scheme://$http_host$relpath"
 
-This rewrite rule is required because when WAS sends redirect (HTTP 302) responses, it always gives WAS port as in HTTP protocol there is no request port header similar to a host header and WAS tries to follow the behavior described in http://www-01.ibm.com/support/docview.wss?uid=swg21470923. But since we need the browser to be redirected without the port number as ingress controller listens only to http and https, this rewrite rule ensures that both http and https redirects are re-written without any port numbers so that they goto the default ports.
+This rewrite rule is required because when WAS sends redirect (HTTP 302) responses, it always uses WAS port as per the behavior described in http://www-01.ibm.com/support/docview.wss?uid=swg21470923. But since we need the browser to be redirected without the port number as ingress controller listens only to http and https, this rewrite rule ensures that both http and https redirects are re-written without any port numbers so that they goto the default ports.
 
 2. If HTTPS is enabled on ingress controller, HTTP requests are redirected by default to https. To disable this, add the following annotations
 
