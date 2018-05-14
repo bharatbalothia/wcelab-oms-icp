@@ -2,8 +2,7 @@ apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   annotations:
-    ingress.kubernetes.io/proxy-redirect-from: ~^(http?://[^:]+):\d+(?<relpath>/.+)$
-      https://$http_host$relpath
+    ingress.kubernetes.io/proxy-redirect-from: "~^(http?://[^:]+):\\d+(?<relpath>/.+)$ $scheme://$http_host$relpath"
   name: proxy-redirect-ingress
   namespace: default
   resourceVersion: "19723094"
